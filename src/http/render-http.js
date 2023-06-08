@@ -139,6 +139,7 @@ function getOptsFromQuery(query) {
     url: query.url,
     attachmentName: query.attachmentName,
     scrollPage: query.scrollPage,
+    scrollInterval: query.scrollInterval,
     emulateScreenMedia: query.emulateScreenMedia,
     enableGPU: query.enableGPU,
     ignoreHttpsErrors: query.ignoreHttpsErrors,

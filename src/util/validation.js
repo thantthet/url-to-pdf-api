@@ -22,6 +22,7 @@ const cookieSchema = Joi.object({
 const sharedQuerySchema = Joi.object({
   attachmentName: Joi.string(),
   scrollPage: Joi.boolean(),
+  scrollInterval: Joi.number(),
   emulateScreenMedia: Joi.boolean(),
   enableGPU: Joi.boolean(),
   ignoreHttpsErrors: Joi.boolean(),

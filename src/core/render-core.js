@@ -42,6 +42,7 @@ async function render(_opts = {}) {
   const opts = _.merge({
     cookies: [],
     scrollPage: false,
+    scrollInterval: 100,
     emulateScreenMedia: true,
     ignoreHttpsErrors: false,
     html: null,
@@ -135,7 +136,7 @@ async function render(_opts = {}) {
 
     if (opts.scrollPage) {
       logger.info('Scroll page ..');
-      await scrollPage(page);
+      await scrollPage(page, opts.scrollInterval);
     }
 
     if (this.failedResponses.length) {
@@ -207,10 +208,9 @@ async function render(_opts = {}) {
   return data;
 }
 
-async function scrollPage(page) {
+async function scrollPage(page, scrollInterval = 100) {
   // Scroll to page end to trigger lazy loading elements
-  await page.evaluate(() => {
-    const scrollInterval = 100;
+  await page.evaluate((scrollInterval) => {
     const scrollStep = Math.floor(window.innerHeight / 2);
     const bottomThreshold = 400;
 
@@ -234,7 +234,7 @@ async function scrollPage(page) {
       setTimeout(reject, 30000);
       scrollDown();
     });
-  });
+  }, scrollInterval);
 }
 
 function logOpts(opts) {
