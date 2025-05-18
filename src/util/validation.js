@@ -56,6 +56,7 @@ const sharedQuerySchema = Joi.object({
   'pdf.margin.left': Joi.string().min(1).max(2000),
   'pdf.printBackground': Joi.boolean(),
   'screenshot.fullPage': Joi.boolean(),
+  'screenshot.emulatePrintMedia': Joi.boolean(),
   'screenshot.quality': Joi.number().integer().min(0).max(100),
   'screenshot.type': Joi.string().valid(['png', 'jpeg']),
   'screenshot.clip.x': Joi.number(),

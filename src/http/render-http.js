@@ -177,6 +177,7 @@ function getOptsFromQuery(query) {
       printBackground: query['pdf.printBackground'],
     },
     screenshot: {
+      emulatePrintMedia: query['screenshot.emulatePrintMedia'],
       fullPage: query['screenshot.fullPage'],
       quality: query['screenshot.quality'],
       type: query['screenshot.type'] || 'png',
