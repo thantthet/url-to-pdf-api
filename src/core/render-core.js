@@ -110,7 +110,7 @@ async function render(_opts = {}) {
     if (opts.emulateScreenMedia) {
       logger.info('Emulate @media screen..');
       await page.emulateMedia('screen');
-    } else if (opts.output == 'screenshot' && opts.screenshot.emulateScreenMedia) {
+    } else if (opts.output === 'screenshot' && opts.screenshot.emulatePrintMedia) {
       logger.info('Emulate @media print..');
       await page.emulateMedia('print');
     }
