@@ -110,6 +110,9 @@ async function render(_opts = {}) {
     if (opts.emulateScreenMedia) {
       logger.info('Emulate @media screen..');
       await page.emulateMedia('screen');
+    } else if (opts.output == 'screenshot' && opts.screenshot.emulateScreenMedia) {
+      logger.info('Emulate @media print..');
+      await page.emulateMedia('print');
     }
 
     if (opts.cookies && opts.cookies.length > 0) {
@@ -177,9 +180,6 @@ async function render(_opts = {}) {
     } else if (opts.output === 'html') {
       data = await page.evaluate(() => document.documentElement.innerHTML);
     } else {
-      if (opts.screenshot.emulateScreenMedia) {
-        await page.emulateMedia('print');
-      }
       // This is done because puppeteer throws an error if fullPage and clip is used at the same
       // time even though clip is just empty object {}
       const screenshotOpts = _.cloneDeep(_.omit(opts.screenshot, ['clip']));
